@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex flex-wrap"></div>
+    <div class="w-33 pa3">  
+        
+        {% if album.created_date %}
+            <time class="date">
+                Added: {{ album.created_date }}
+            </time>
+        {% endif %}
+        <h2>{{ album.title }}</h2>
+        <h3> {{ album.artist }}</h3>
+        <p>{{ album.text|linebreaksbr }}</p>
+
+        <p>
+            <a href="{% url 'edit_album' pk=album.pk %}">Edit Album Details</a><br>
+            <a class="red" href="{% url 'delete_album' pk=album.pk %}">Delete Album</a>   
+            <p><a class="btn btn-secondary"  href="{% url 'add_album' %}">Add a New Album</a></p>
+        </p>
+    </div>
+{% endblock %}
+</div>
