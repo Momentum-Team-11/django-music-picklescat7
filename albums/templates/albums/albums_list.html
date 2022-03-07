@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- <h1>All Albums</h1> -->
+
+<header>
+    <h1>Brittany's Music Collection by Albums</h1>
+</header>
+
+<p><a href="{% url 'add_album' %}">Add New Album</a></p>
+<div class="flex flex-wrap">
+{% for album in albums %}
+  <div class="w-33 pa3">  
+    <article>
+        <time>Added: {{ album.created_date }}</time>
+        <h2><a href="{% url 'album_detail' pk=album.pk%}">{{ album.title }}</a></h2>
+        <h3>{{ album.artist }}</h3>
+        <p>My review: {{ album.text|linebreaksbr }}</p>
+    </article>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}
+
+
